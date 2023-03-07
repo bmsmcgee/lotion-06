@@ -103,3 +103,14 @@
 	font-size: small;
 	margin-top: 35px;
 }
+
+.workBox {
+	display: flex;
+	position: relative;
+	border-bottom: 2px solid lightgray;
+	height: 80px;
+	width: 100%;
+	box-sizing: border-box;
+	font-size: xx-large;
+	padding-left: 20px;
+}
