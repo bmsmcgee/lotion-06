@@ -94,3 +94,12 @@
 	padding-left: 10px;
 	padding-top: 5px;
 }
+
+.boxEllipses {
+	display: flex;
+	position: absolute;
+	width: auto;
+	height: 50%;
+	font-size: small;
+	margin-top: 35px;
+}
