@@ -84,7 +84,11 @@
 
 .savedNotesBox {
 	width: 100%;
+	color: white;
 	display: flex;
 	height: 75px;
-	border-bottom: 1px solid darkgray;
+	border-bottom: 2px solid lightgray;
+	background-color: rgb(76, 69, 92);
+	font-size: larger;
+	font-weight: 500;
 }
