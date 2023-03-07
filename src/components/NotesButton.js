@@ -1,7 +1,7 @@
 import "./Notes.css";
 
-const NotesButton = () => {
-	return <button>&#x002b;</button>;
+const NotesButton = ({ onClick }) => {
+	return <button onClick={onClick}>&#x002b;</button>;
 };
 
 export default NotesButton;
