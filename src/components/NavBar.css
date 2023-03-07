@@ -8,8 +8,21 @@
 .headText {
 	display: flex;
 	flex-basis: 100%;
-	justify-content: center;
+	width: 100%;
 	font-family: sans-serif;
 	font-size: xx-large;
 	font-weight: bold;
+	position: absolute;
+	justify-content: center;
+}
+
+.headSubText {
+	display: flex;
+	font-family: inherit;
+	font-size: smaller;
+	font-weight: 600;
+	color: darkgray;
+	width: 100%;
+	justify-content: center;
+	margin-top: 50px;
 }
