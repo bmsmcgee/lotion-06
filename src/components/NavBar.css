@@ -28,7 +28,7 @@
 	margin-top: 50px;
 }
 
-button {
+.navBox > button {
 	width: 93px;
 	height: 93px;
 	display: block;
@@ -38,6 +38,7 @@ button {
 	background: inherit;
 }
 
-button:hover {
+.navBox > button:hover {
 	background-color: rgb(76, 69, 92);
+	color: white;
 }
