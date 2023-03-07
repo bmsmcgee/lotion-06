@@ -1,5 +1,11 @@
+import NavBar from "./components/NavBar";
+
 function App() {
-  return <h1>Lotion</h1>;
+	return (
+		<div>
+			<NavBar />;
+		</div>
+	);
 }
 
 export default App;
