@@ -4,6 +4,7 @@
 	width: 100vw;
 	background-color: whitesmoke;
 	border-top: 2px solid lightgray;
+	flex-direction: column;
 }
 
 .notesHead {
@@ -16,9 +17,9 @@
 }
 
 .notesTitle {
-	width: 100vw;
+	width: 100%;
 	display: flex;
-	position: relative;
+	position: absolute;
 	height: 70px;
 	border-bottom: 2px solid lightgray;
 	align-items: center;
@@ -41,4 +42,13 @@
 .notesTitle > button:hover {
 	background-color: rgb(76, 69, 92);
 	color: white;
+}
+
+.savedNotes {
+	width: 200px;
+	height: 200px;
+}
+
+.placeholder {
+	color: lightgray;
 }
