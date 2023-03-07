@@ -2,6 +2,7 @@
 	border-bottom: 2px solid whitesmoke;
 	min-height: 100px;
 	box-sizing: border-box;
+	width: 100%;
 }
 
 .headText {
