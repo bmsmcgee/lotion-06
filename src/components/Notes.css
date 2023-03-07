@@ -14,3 +14,10 @@
 	position: relative;
 	box-sizing: border-box;
 }
+
+.notesTitle {
+	width: 100vw;
+	display: flex;
+	height: 70px;
+	border-bottom: 2px solid lightgray;
+}
