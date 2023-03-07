@@ -1,7 +1,7 @@
 .noteContainer {
 	position: relative;
-	height: 100vh;
-	width: 100vw;
+	height: 100%;
+	width: 100%;
 	background-color: whitesmoke;
 	border-top: 2px solid lightgray;
 	flex-direction: column;
@@ -46,13 +46,19 @@
 
 .savedNotes {
 	width: 100%;
-	height: 100%;
+	height: auto;
 	display: flex;
 	position: absolute;
 	flex-wrap: wrap;
 	margin-top: 70px;
 }
 
-.placeholder {
-	color: lightgray;
+.placeholderNote {
+	color: darkgray;
+	display: flex;
+	flex-basis: 100%;
+	justify-content: center;
+	font-size: larger;
+	font-weight: 400;
+	padding-top: 10px;
 }
