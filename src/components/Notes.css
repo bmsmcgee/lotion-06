@@ -18,6 +18,12 @@
 .notesTitle {
 	width: 100vw;
 	display: flex;
+	position: relative;
 	height: 70px;
 	border-bottom: 2px solid lightgray;
+	align-items: center;
+	padding-left: 15px;
+	font-size: xx-large;
+	font-weight: 600;
+	box-sizing: border-box;
 }
