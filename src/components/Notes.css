@@ -27,3 +27,18 @@
 	font-weight: 600;
 	box-sizing: border-box;
 }
+
+.notesTitle > button {
+	height: 100%;
+	position: absolute;
+	right: 0;
+	border: none;
+	background: inherit;
+	width: 68px;
+	box-sizing: border-box;
+}
+
+.notesTitle > button:hover {
+	background-color: rgb(76, 69, 92);
+	color: white;
+}
