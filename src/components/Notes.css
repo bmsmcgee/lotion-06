@@ -22,11 +22,11 @@
 	width: 100%;
 	display: flex;
 	position: absolute;
-	height: 70px;
+	height: 50px;
 	border-bottom: 2px solid lightgray;
 	align-items: center;
 	padding-left: 15px;
-	font-size: xx-large;
+	font-size: x-large;
 	font-weight: 600;
 	box-sizing: border-box;
 }
@@ -37,7 +37,7 @@
 	right: 0;
 	border: none;
 	background: inherit;
-	width: 68px;
+	width: 48px;
 	box-sizing: border-box;
 }
 
@@ -52,7 +52,7 @@
 	display: flex;
 	position: absolute;
 	flex-wrap: wrap;
-	margin-top: 70px;
+	margin-top: 50px;
 }
 
 .placeholderNote {
