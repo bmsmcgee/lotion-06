@@ -69,4 +69,15 @@
 	width: 100vw;
 	height: 100vh;
 	display: flex;
+	flex-direction: column;
+}
+
+.wsPlaceholder {
+	display: flex;
+	box-sizing: border-box;
+	flex-basis: 100%;
+	padding-top: 25%;
+	color: darkgray;
+	font-size: xx-large;
+	justify-content: center;
 }
