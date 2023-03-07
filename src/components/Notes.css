@@ -1,0 +1,16 @@
+.noteContainer {
+	position: relative;
+	height: 100vh;
+	width: 100vw;
+	background-color: whitesmoke;
+	border-top: 2px solid lightgray;
+}
+
+.notesHead {
+	height: 100vh;
+	width: 25vw;
+	border-right: 2px solid lightgray;
+	display: flex;
+	position: relative;
+	box-sizing: border-box;
+}
