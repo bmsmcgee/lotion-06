@@ -108,7 +108,7 @@
 	display: flex;
 	position: relative;
 	border-bottom: 2px solid lightgray;
-	height: 80px;
+	max-height: 65px;
 	width: 100%;
 	box-sizing: border-box;
 	font-size: xx-large;
@@ -173,4 +173,31 @@
 .delButton:hover {
 	background-color: rgb(76, 69, 92);
 	color: white;
+}
+
+.quill {
+	height: 100%;
+	display: flex;
+	position: relative;
+	border: none;
+}
+
+.ql-toolbar.ql-snow {
+	width: 100%;
+	display: flex;
+	position: absolute;
+	box-sizing: border-box;
+	border-bottom: 1px solid lightgray;
+	border-left: none;
+	border-top: none;
+	border-right: none;
+}
+
+.ql-container.ql-snow {
+	position: absolute;
+	display: flex;
+	top: 42px;
+	width: 100%;
+	height: calc(100% - 42px);
+	border: none;
 }
