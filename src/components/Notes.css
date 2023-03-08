@@ -114,3 +114,11 @@
 	font-size: xx-large;
 	padding-left: 20px;
 }
+
+.inputBox {
+	border: none;
+	height: 66%;
+	outline: none;
+	width: 75%;
+	background: none;
+}
