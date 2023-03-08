@@ -14,6 +14,7 @@ const NoteBox = ({ notes, setSelectedNote }) => {
 						className="savedNotesBox"
 						onClick={() => setSelectedNote(note)}>
 						{note.title}
+
 						<div className="boxEllipses">...</div>
 					</div>
 				))
