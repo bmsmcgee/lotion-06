@@ -149,6 +149,11 @@
 	background-color: inherit;
 }
 
+.saveButton:hover {
+	background-color: rgb(76, 69, 92);
+	color: white;
+}
+
 .delButton {
 	display: flex;
 	position: absolute;
@@ -163,4 +168,9 @@
 	padding: 0 0 0 0;
 	align-items: center;
 	justify-content: center;
+}
+
+.delButton:hover {
+	background-color: rgb(76, 69, 92);
+	color: white;
 }
