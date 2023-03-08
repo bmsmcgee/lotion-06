@@ -12,6 +12,7 @@ function App() {
 					<Route path="/" element={<Navigate replace to="/notes" />} />
 					<Route path="/notes" element={<NotesContainer />} />
 					<Route path="/notes/:id/edit" element={<NotesContainer />} />
+					<Route path="/notes/:id" element={<NotesContainer />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
