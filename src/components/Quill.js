@@ -3,13 +3,8 @@ import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import "./Notes.css";
 
-const Quill = ({ selectedNote, updateContent }) => {
-	return (
-		<ReactQuill
-			value={selectedNote ? selectedNote.content : ""}
-			onChange={(content) => updateContent(content)}
-		/>
-	);
+const Quill = () => {
+	return <ReactQuill />;
 };
 
 export default Quill;
