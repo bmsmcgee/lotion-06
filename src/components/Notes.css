@@ -86,7 +86,7 @@
 	width: 100%;
 	color: white;
 	display: flex;
-	height: 75px;
+	height: 90px;
 	border-bottom: 2px solid lightgray;
 	background-color: rgb(76, 69, 92);
 	font-size: larger;
@@ -101,7 +101,7 @@
 	width: auto;
 	height: 50%;
 	font-size: small;
-	margin-top: 35px;
+	margin-top: 45px;
 }
 
 .workBox {
@@ -200,4 +200,8 @@
 	width: 100%;
 	height: calc(100% - 42px);
 	border: none;
+}
+
+.ql-editor {
+	width: 100%;
 }

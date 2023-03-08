@@ -4,7 +4,7 @@ import "react-quill/dist/quill.snow.css";
 import "./Notes.css";
 
 const Quill = () => {
-	return <ReactQuill />;
+	return <ReactQuill placeholder="Your Note Here" />;
 };
 
 export default Quill;
