@@ -2,20 +2,27 @@ import { useState } from "react";
 
 import "./Notes.css";
 import NotesButton from "./NotesButton";
-import Placeholder from "./NotesPlaceholder";
 import WSPlaceHolder from "./workspacePlaceholder";
 import NoteBox from "./NoteBox";
+import Quill from "./Quill";
 
 const NotesContainer = () => {
 	const [notes, setNotes] = useState([]);
 	const [selectedNote, setSelectedNote] = useState(null);
+
 	const addNote = () => {
-		setNotes([...notes, { title: "Untitled", content: "Your note here" }]);
+		setNotes([...notes, { title: "Untitled" }]);
 		setSelectedNote({ title: "Untitled" });
 	};
-	const selectNote = (note) => {
-		setSelectedNote(note);
+
+	const updateTitle = (title) => {
+		setSelectedNote({ ...selectedNote, title });
 	};
+
+	// const selectNote = (note) => {
+	// 	setSelectedNote(note);
+	// };
+
 	return (
 		<>
 			<div className="noteContainer">
@@ -29,7 +36,8 @@ const NotesContainer = () => {
 					</div>
 				</div>
 				<div className="notesWorkspaceContainer">
-					<WSPlaceHolder selectedNote={selectedNote} />
+					<WSPlaceHolder selectedNote={selectedNote} updateTitle={updateTitle} />
+					<Quill selectedNote={selectedNote} updateTitle={updateTitle} />
 				</div>
 			</div>
 		</>
