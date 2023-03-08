@@ -130,4 +130,37 @@
 	background-color: whitesmoke;
 	border: none;
 	font-size: large;
+	outline: none;
+	font-family: monospace;
+}
+
+.saveButton {
+	height: 100%;
+	display: flex;
+	position: absolute;
+	right: 78px;
+	font-size: large;
+	width: 78px;
+	justify-content: center;
+	align-items: center;
+	padding: 0 0 0 0;
+	box-sizing: border-box;
+	border: none;
+	background-color: inherit;
+}
+
+.delButton {
+	display: flex;
+	position: absolute;
+	right: 0;
+	height: 100%;
+	width: 78px;
+	outline: none;
+	border: none;
+	background-color: inherit;
+	font-size: large;
+	box-sizing: border-box;
+	padding: 0 0 0 0;
+	align-items: center;
+	justify-content: center;
 }
