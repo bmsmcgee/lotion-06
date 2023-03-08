@@ -113,6 +113,7 @@
 	box-sizing: border-box;
 	font-size: xx-large;
 	padding-left: 20px;
+	flex-direction: column;
 }
 
 .inputBox {
@@ -121,4 +122,12 @@
 	outline: none;
 	width: 75%;
 	background: none;
+}
+
+.dateTime {
+	display: flex;
+	width: 20%;
+	background-color: whitesmoke;
+	border: none;
+	font-size: large;
 }
