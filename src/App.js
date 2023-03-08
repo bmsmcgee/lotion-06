@@ -9,8 +9,9 @@ function App() {
 			<BrowserRouter>
 				<NavBar />
 				<Routes>
-					<Route path="/notes" element={<NotesContainer />}></Route>
 					<Route path="/" element={<Navigate replace to="/notes" />} />
+					<Route path="/notes" element={<NotesContainer />} />
+					<Route path="/notes/:id/edit" element={<NotesContainer />} />
 				</Routes>
 			</BrowserRouter>
 		</div>
