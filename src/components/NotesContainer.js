@@ -37,7 +37,6 @@ const NotesContainer = () => {
 				</div>
 				<div className="notesWorkspaceContainer">
 					<WSPlaceHolder selectedNote={selectedNote} updateTitle={updateTitle} />
-					<Quill selectedNote={selectedNote} updateTitle={updateTitle} />
 				</div>
 			</div>
 		</>
