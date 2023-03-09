@@ -8,6 +8,8 @@ import NoteBox from "./NoteBox";
 const NotesContainer = () => {
 	const [notes, setNotes] = useState([]);
 	const [selectedNote, setSelectedNote] = useState(null);
+	const [isSaved, setIsSaved] = useState(false);
+
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -26,6 +28,10 @@ const NotesContainer = () => {
 		setSelectedNote({ ...selectedNote, title });
 	};
 
+	const updateIsSaved = (value) => {
+		setIsSaved(value);
+	};
+
 	return (
 		<>
 			<div className="noteContainer">
@@ -35,11 +41,22 @@ const NotesContainer = () => {
 						<NotesButton onClick={addNote} />
 					</div>
 					<div className="savedNotes">
-						<NoteBox notes={notes} setSelectedNote={setSelectedNote} />
+						<NoteBox
+							selectedNote={selectedNote}
+							notes={notes}
+							setSelectedNote={setSelectedNote}
+							updateTitle={updateTitle}
+							isSaved={isSaved}
+						/>
 					</div>
 				</div>
 				<div className="notesWorkspaceContainer">
-					<WSPlaceHolder selectedNote={selectedNote} updateTitle={updateTitle} />
+					<WSPlaceHolder
+						selectedNote={selectedNote}
+						updateTitle={updateTitle}
+						setSelectedNote={setSelectedNote}
+						updateIsSaved={updateIsSaved}
+					/>
 				</div>
 			</div>
 		</>
