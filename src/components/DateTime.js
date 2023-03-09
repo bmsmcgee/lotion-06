@@ -1,7 +1,22 @@
 import "./Notes.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-const DateTime = ({ onLoad, onChange }) => {
+const monthNames = [
+	"January",
+	"February",
+	"March",
+	"April",
+	"May",
+	"June",
+	"July",
+	"August",
+	"September",
+	"October",
+	"November",
+	"December",
+];
+
+const DateTime = ({ onChange, readOnly }) => {
 	const [value, setValue] = useState(null);
 	const currentDateTime = new Date();
 	currentDateTime.setMinutes(currentDateTime.getMinutes() - 420);
@@ -11,12 +26,9 @@ const DateTime = ({ onLoad, onChange }) => {
 		":" +
 		(seconds < 10 ? "0" + seconds : seconds);
 
-	useEffect(() => {
-		if (onLoad) {
-			setValue(actualTime);
-			onLoad(actualTime);
-		}
-	}, [onLoad, actualTime]);
+	const month = monthNames[currentDateTime.getMonth()];
+	const date = currentDateTime.getDate();
+	const year = currentDateTime.getFullYear();
 
 	const handleChange = (e) => {
 		setValue(e.target.value);
@@ -27,9 +39,16 @@ const DateTime = ({ onLoad, onChange }) => {
 
 	return (
 		<input
-			className="dateTime"
-			type={"datetime-local"}
-			value={value || actualTime}
+			readOnly={readOnly}
+			className={`dateTime ${readOnly ? "disabled" : ""}`}
+			type={readOnly ? "text" : "datetime-local"}
+			value={
+				readOnly
+					? `${month} ${date}, ${year} at ${currentDateTime
+							.toISOString()
+							.substring(11, 16)}`
+					: value || actualTime
+			}
 			onChange={handleChange}
 		/>
 	);
