@@ -35,17 +35,6 @@ const WSPlaceHolder = ({
 			const id = location.pathname.split("/")[2];
 			console.log(id);
 
-			const newData = {
-				id,
-				title: title || selectedNote.title,
-				date: date,
-				text: text,
-			};
-
-			const saveData = [...data, newData];
-			setData(saveData);
-			localStorage.setItem(`data_${id}`, JSON.stringify(newData));
-
 			const newPath = location.pathname.replace("/edit", "");
 			navigate(newPath, { replace: true });
 
@@ -73,6 +62,17 @@ const WSPlaceHolder = ({
 				[],
 				{ hour: "2-digit", minute: "2-digit", hour12: false }
 			)}`;
+
+			const newData = {
+				id,
+				title: title || selectedNote.title,
+				date: saveDate,
+				text: text,
+			};
+
+			const saveData = [...data, newData];
+			setData(saveData);
+			localStorage.setItem(`data_${id}`, JSON.stringify(newData));
 
 			setSelectedNote({
 				...selectedNote,

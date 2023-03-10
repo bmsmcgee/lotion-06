@@ -4,12 +4,15 @@ import "./Notes.css";
 import NotesButton from "./NotesButton";
 import WSPlaceHolder from "./workspacePlaceholder";
 import NoteBox from "./NoteBox";
+import { NotesContext } from "./notesContext";
 
 const NotesContainer = () => {
 	const [notes, setNotes] = useState([]);
 	const [selectedNote, setSelectedNote] = useState(null);
 	const [isSaved, setIsSaved] = useState(false);
 	const [isEdit, setIsEdit] = useState(false);
+
+	const [isNotesHeadHidden, setIsNotesHeadHidden] = useState(false);
 
 	const [title, setTitle] = useState("");
 
@@ -44,40 +47,50 @@ const NotesContainer = () => {
 		setIsSaved(value);
 	};
 
-	const updateIsEdit = (value) => {
-		setIsEdit(value);
+	const handleSave = () => {
+		setIsSaved(true);
 	};
 
 	return (
 		<>
-			<div className="noteContainer">
-				<div className="notesHead">
-					<div className="notesTitle">
-						Notes
-						<NotesButton onClick={addNote} />
+			<NotesContext.Provider value={{ isNotesHeadHidden, setIsNotesHeadHidden }}>
+				<div className="noteContainer">
+					<div className={`notesHead ${isNotesHeadHidden ? "hidden" : ""}`}>
+						<div className="notesTitle">
+							Notes
+							<NotesButton
+								onClick={() => {
+									addNote();
+									handleSave();
+								}}
+								setIsEdit={setIsEdit}
+								setIsSaved={setIsSaved}
+							/>
+						</div>
+						<div className="savedNotes">
+							<NoteBox
+								selectedNote={selectedNote}
+								notes={notes}
+								setSelectedNote={setSelectedNote}
+								updateTitle={updateTitle}
+								isSaved={isSaved}
+								isEdit={isEdit}
+							/>
+						</div>
 					</div>
-					<div className="savedNotes">
-						<NoteBox
+
+					<div className="notesWorkspaceContainer">
+						<WSPlaceHolder
 							selectedNote={selectedNote}
-							notes={notes}
+							title={title}
+							setTitle={setTitle}
 							setSelectedNote={setSelectedNote}
-							updateTitle={updateTitle}
-							isSaved={isSaved}
-							isEdit={isEdit}
+							updateIsSaved={updateIsSaved}
+							saveTitle={saveTitle}
 						/>
 					</div>
 				</div>
-				<div className="notesWorkspaceContainer">
-					<WSPlaceHolder
-						selectedNote={selectedNote}
-						title={title}
-						setTitle={setTitle}
-						setSelectedNote={setSelectedNote}
-						updateIsSaved={updateIsSaved}
-						saveTitle={saveTitle}
-					/>
-				</div>
-			</div>
+			</NotesContext.Provider>
 		</>
 	);
 };

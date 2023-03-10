@@ -1,7 +1,14 @@
 import "./NavBar.css";
 
-const NavButton = () => {
-	return <button>&#9776;</button>;
+const NavButton = ({ setShowNotesHead }) => {
+	return (
+		<button
+			onClick={() => {
+				setShowNotesHead((prevShowNotesHead) => !prevShowNotesHead);
+			}}>
+			&#9776;
+		</button>
+	);
 };
 
 export default NavButton;

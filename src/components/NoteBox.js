@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Placeholder from "./NotesPlaceholder";
 import "./Notes.css";
 
 const NoteBox = ({ selectedNote, notes, setSelectedNote, updateTitle, isSaved, isEdit }) => {
-	const [mostRecentIndex, setMostRecentIndex] = useState(null);
-	const notesLengthRef = useRef(notes.length);
+	const [mostRecentIndex, setMostRecentIndex] = useState(0);
 
 	const handleClick = (note) => {
 		if (!isEdit) {
@@ -13,7 +12,12 @@ const NoteBox = ({ selectedNote, notes, setSelectedNote, updateTitle, isSaved, i
 	};
 
 	useEffect(() => {
-		setMostRecentIndex(0);
+		const storedNotes = [];
+		for (let i = notes.length; i > 0; i--) {
+			const storedNote = localStorage.getItem(`data_${i}`);
+			storedNotes.push(JSON.parse(storedNote));
+		}
+		setMostRecentIndex(storedNotes.length - 1);
 	}, [notes]);
 
 	return (
@@ -21,23 +25,37 @@ const NoteBox = ({ selectedNote, notes, setSelectedNote, updateTitle, isSaved, i
 			{notes.length === 0 ? (
 				<Placeholder />
 			) : (
-				notes.map((note, index) => (
-					<div
-						key={index}
-						className={`savedNotesBox ${index === 0 ? "most-recent" : ""}`}
-						onClick={() => handleClick(note)}>
-						{!isEdit && isSaved && selectedNote ? selectedNote.title : "Untitled"}
+				notes.map((note, index) => {
+					const storedNote = localStorage.getItem(`data_${mostRecentIndex - index + 1}`);
+					const parsedNote = JSON.parse(storedNote);
+					return (
+						<div
+							key={index}
+							className={`savedNotesBox ${index === 0 ? "most-recent" : ""}`}
+							onClick={() => handleClick(parsedNote)}>
+							{index === 0 && isSaved && selectedNote
+								? selectedNote.title
+								: parsedNote
+								? parsedNote.title
+								: "Untitled"}
 
-						<div className="saveDate">
-							{selectedNote && selectedNote.saveDate
-								? `${selectedNote.saveDate}`
-								: ""}
+							<div className="saveDate">
+								{index === 0 && selectedNote && selectedNote.saveDate
+									? `${selectedNote.saveDate}`
+									: parsedNote
+									? parsedNote.date
+									: ""}
+							</div>
+							<div className="boxEllipses">
+								{index === 0 && isSaved && selectedNote
+									? selectedNote.previewText
+									: parsedNote
+									? parsedNote.text
+									: "..."}
+							</div>
 						</div>
-						<div className="boxEllipses">
-							{isSaved && selectedNote ? selectedNote.previewText : "..."}
-						</div>
-					</div>
-				))
+					);
+				})
 			)}
 		</>
 	);
