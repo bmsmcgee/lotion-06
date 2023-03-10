@@ -217,3 +217,11 @@
 .ql-editor {
 	width: 100%;
 }
+
+.saveDate {
+	display: flex;
+	position: absolute;
+	font-size: x-small;
+	top: 30px;
+	color: darkgray;
+}

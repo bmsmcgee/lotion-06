@@ -9,6 +9,9 @@ const NotesContainer = () => {
 	const [notes, setNotes] = useState([]);
 	const [selectedNote, setSelectedNote] = useState(null);
 	const [isSaved, setIsSaved] = useState(false);
+	const [isEdit, setIsEdit] = useState(false);
+
+	const [title, setTitle] = useState("");
 
 	const navigate = useNavigate();
 
@@ -25,11 +28,21 @@ const NotesContainer = () => {
 	};
 
 	const updateTitle = (title) => {
+		setTitle(title);
+	};
+
+	const saveTitle = () => {
 		setSelectedNote({ ...selectedNote, title });
+		setTitle("");
+		setIsSaved(true);
 	};
 
 	const updateIsSaved = (value) => {
 		setIsSaved(value);
+	};
+
+	const updateIsEdit = (value) => {
+		setIsEdit(value);
 	};
 
 	return (
@@ -47,15 +60,18 @@ const NotesContainer = () => {
 							setSelectedNote={setSelectedNote}
 							updateTitle={updateTitle}
 							isSaved={isSaved}
+							isEdit={isEdit}
 						/>
 					</div>
 				</div>
 				<div className="notesWorkspaceContainer">
 					<WSPlaceHolder
 						selectedNote={selectedNote}
-						updateTitle={updateTitle}
+						title={title}
+						setTitle={setTitle}
 						setSelectedNote={setSelectedNote}
 						updateIsSaved={updateIsSaved}
+						saveTitle={saveTitle}
 					/>
 				</div>
 			</div>

@@ -2,14 +2,22 @@ import React, { useEffect } from "react";
 import Placeholder from "./NotesPlaceholder";
 import "./Notes.css";
 
-const NoteBox = ({ selectedNote, notes, setSelectedNote, updateTitle, isSaved }) => {
+const NoteBox = ({ selectedNote, notes, setSelectedNote, updateTitle, isSaved, isEdit }) => {
 	const handleClick = (note) => {
-		setSelectedNote(note);
+		if (!isEdit) {
+			setSelectedNote(note);
+		}
 	};
 
+	// const handleClick = (note) => {
+	// 	setSelectedNote(note);
+	// };
+
 	useEffect(() => {
-		console.log("Updated title: ", selectedNote && selectedNote.title);
-	}, [selectedNote]);
+		if (isSaved) {
+			console.log("Updated title: ", selectedNote && selectedNote.title);
+		}
+	}, [selectedNote, isSaved]);
 
 	return (
 		<>
@@ -18,7 +26,13 @@ const NoteBox = ({ selectedNote, notes, setSelectedNote, updateTitle, isSaved })
 			) : (
 				notes.map((note, index) => (
 					<div key={index} className="savedNotesBox" onClick={() => handleClick(note)}>
-						{isSaved && selectedNote ? selectedNote.title : "Untitled"}
+						{!isEdit && isSaved && selectedNote ? selectedNote.title : "Untitled"}
+
+						<div className="saveDate">
+							{selectedNote && selectedNote.saveDate
+								? `${selectedNote.saveDate}`
+								: ""}
+						</div>
 						<div className="boxEllipses">
 							{isSaved && selectedNote ? selectedNote.previewText : "..."}
 						</div>

@@ -54,4 +54,5 @@ const DateTime = ({ onChange, readOnly }) => {
 	);
 };
 
+export { monthNames };
 export default DateTime;
