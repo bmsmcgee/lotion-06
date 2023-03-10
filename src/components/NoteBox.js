@@ -1,23 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Placeholder from "./NotesPlaceholder";
 import "./Notes.css";
 
 const NoteBox = ({ selectedNote, notes, setSelectedNote, updateTitle, isSaved, isEdit }) => {
+	const [mostRecentIndex, setMostRecentIndex] = useState(null);
+	const notesLengthRef = useRef(notes.length);
+
 	const handleClick = (note) => {
 		if (!isEdit) {
 			setSelectedNote(note);
 		}
 	};
 
-	// const handleClick = (note) => {
-	// 	setSelectedNote(note);
-	// };
-
 	useEffect(() => {
-		if (isSaved) {
-			console.log("Updated title: ", selectedNote && selectedNote.title);
-		}
-	}, [selectedNote, isSaved]);
+		setMostRecentIndex(0);
+	}, [notes]);
 
 	return (
 		<>
@@ -25,7 +22,10 @@ const NoteBox = ({ selectedNote, notes, setSelectedNote, updateTitle, isSaved, i
 				<Placeholder />
 			) : (
 				notes.map((note, index) => (
-					<div key={index} className="savedNotesBox" onClick={() => handleClick(note)}>
+					<div
+						key={index}
+						className={`savedNotesBox ${index === 0 ? "most-recent" : ""}`}
+						onClick={() => handleClick(note)}>
 						{!isEdit && isSaved && selectedNote ? selectedNote.title : "Untitled"}
 
 						<div className="saveDate">

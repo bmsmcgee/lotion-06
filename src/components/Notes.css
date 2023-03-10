@@ -84,15 +84,20 @@
 
 .savedNotesBox {
 	width: 100%;
-	color: white;
+	color: black;
 	display: flex;
 	height: 90px;
 	border-bottom: 2px solid lightgray;
-	background-color: rgb(76, 69, 92);
+	background-color: white;
 	font-size: larger;
 	font-weight: 500;
 	padding-left: 10px;
 	padding-top: 5px;
+}
+
+.most-recent {
+	color: white;
+	background-color: rgb(76, 69, 92);
 }
 
 .boxEllipses {

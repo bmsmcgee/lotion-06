@@ -32,15 +32,19 @@ const WSPlaceHolder = ({
 		if (!isEdit) {
 			saveTitle();
 
+			const id = location.pathname.split("/")[2];
+			console.log(id);
+
 			const newData = {
-				title: title,
+				id,
+				title: title || selectedNote.title,
 				date: date,
 				text: text,
 			};
 
 			const saveData = [...data, newData];
 			setData(saveData);
-			localStorage.setItem("data", JSON.stringify(data));
+			localStorage.setItem(`data_${id}`, JSON.stringify(newData));
 
 			const newPath = location.pathname.replace("/edit", "");
 			navigate(newPath, { replace: true });
@@ -70,7 +74,12 @@ const WSPlaceHolder = ({
 				{ hour: "2-digit", minute: "2-digit", hour12: false }
 			)}`;
 
-			setSelectedNote({ ...selectedNote, title, previewText, saveDate });
+			setSelectedNote({
+				...selectedNote,
+				title: title || selectedNote.title,
+				previewText,
+				saveDate,
+			});
 
 			window.onbeforeunload = function () {
 				localStorage.clear();
@@ -78,7 +87,9 @@ const WSPlaceHolder = ({
 
 			setIsEdit(true);
 		} else {
-			navigate(location.pathname + "/edit", { replace: true });
+			if (!location.pathname.includes("/edit")) {
+				navigate(location.pathname + "/edit", { replace: true });
+			}
 			setIsReadOnly(!isReadOnly);
 			setIsSaved(false);
 			setIsEdit(false);
@@ -88,10 +99,6 @@ const WSPlaceHolder = ({
 	useEffect(() => {
 		setDate(new Date().toISOString().substring(0, 16));
 	}, []);
-
-	useEffect(() => {
-		localStorage.setItem("data", JSON.stringify(data));
-	}, [data]);
 
 	return selectedNote ? (
 		<>

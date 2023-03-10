@@ -22,9 +22,12 @@ const NotesContainer = () => {
 	}, [selectedNote, navigate]);
 
 	const addNote = () => {
-		setNotes([...notes, { title: "Untitled" }]);
-		setSelectedNote({ title: "Untitled" });
+		const newNote = { id: notes.length + 1, title: "Untitled" };
+		setNotes([...notes, newNote]);
+		setSelectedNote(newNote);
 		navigate(`/notes/${notes.length + 1}/edit`);
+		setIsSaved(false);
+		setIsEdit(false);
 	};
 
 	const updateTitle = (title) => {
